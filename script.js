@@ -32,7 +32,8 @@ function stopRecording() {
 function sendChunk(chunk, isFinal) {
   const reader = new FileReader();
   reader.onloadend = () => {
-    fetch(`http://localhost:3000/upload?final=${isFinal}`, {
+    // fetch(`https://voice-test-firebase.onrender.com/upload?final=${isFinal}`, {
+    fetch(`https://voice-test-firebase.onrender.com/upload?final=${isFinal}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/octet-stream",

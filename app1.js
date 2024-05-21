@@ -32,7 +32,7 @@ app.post("/upload", (req, res) => {
   req.on("end", async () => {
     audioChunks.push(Buffer.concat(chunk));
     if (isFinalChunk) {
-      const fileName = `audio-${Date.now()}.bin`; // Change the extension to .bin for pure binary format
+      const fileName = `audio-${Date.now()}.webm`;
       const audioBuffer = Buffer.concat(audioChunks);
 
       // Create a temporary file
@@ -43,15 +43,15 @@ app.post("/upload", (req, res) => {
       try {
         await bucket.upload(tempFilePath, {
           destination: fileName,
-          contentType: "application/octet-stream", // Specify generic binary content type
+          contentType: "audio/webm",
         });
 
         // Remove the temporary file
         fs.unlinkSync(tempFilePath);
 
         audioChunks = []; // Clear the chunks after saving
-        res.send("Audio file saved as pure binary successfully");
-        console.log("Audio file saved as pure binary successfully");
+        res.send("Audio file saved successfully");
+        console.log("Audio file saved successfully");
       } catch (err) {
         console.error("Error saving audio file", err);
         res.status(500).send("Error saving audio file");
