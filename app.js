@@ -14,7 +14,7 @@ const serviceAccount = require("./store-voice-firebase-adminsdk-4ps9i-e8b81e8a47
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: "store-voice.appspot.com",
+  storageBucket: "reportbutton-bdc25.appspot.com",
 });
 
 const bucket = admin.storage().bucket();
